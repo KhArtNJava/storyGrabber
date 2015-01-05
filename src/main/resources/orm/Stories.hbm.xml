@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 4, 2015 12:47:44 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.grabberrasskazov.models.Stories" table="stories" catalog="grabberRasskazov" optimistic-lock="version">
+        <id name="storyId" type="java.lang.Integer">
+            <column name="story_id" />
+            <generator class="identity" />
+        </id>
+        <property name="storyName" type="string">
+            <column name="storyName" length="777" />
+        </property>
+        <property name="storyText" type="string">
+            <column name="storyText" />
+        </property>
+        <property name="dateAdded" type="timestamp">
+            <column name="dateAdded" length="19" />
+        </property>
+        <property name="size" type="java.lang.Float">
+            <column name="size" precision="12" scale="0" />
+        </property>
+        <property name="oldId" type="string">
+            <column name="OldId" length="100" />
+        </property>
+        <set cascade="all" name="storiesToWritersRelationses" table="storiesToWritersRelations" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="story_Id" />
+            </key>
+            <one-to-many class="com.mycompany.grabberrasskazov.models.StoriesToWritersRelations" />
+        </set>
+        <set cascade="all" name="storiesToCategoriessRelationses" table="storiesToCategoriessRelations" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="story_id" />
+            </key>
+            <one-to-many class="com.mycompany.grabberrasskazov.models.StoriesToCategoriessRelations" />
+        </set>
+    </class>
+</hibernate-mapping>

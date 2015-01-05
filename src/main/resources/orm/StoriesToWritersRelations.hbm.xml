@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 4, 2015 12:47:44 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.grabberrasskazov.models.StoriesToWritersRelations" table="storiesToWritersRelations" catalog="grabberRasskazov" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="stories" class="com.mycompany.grabberrasskazov.models.Stories" fetch="select">
+            <column name="story_Id" />
+        </many-to-one>
+        <many-to-one name="storyWriters" class="com.mycompany.grabberrasskazov.models.StoryWriters" fetch="select">
+            <column name="writer_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
